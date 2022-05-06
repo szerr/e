@@ -12,8 +12,8 @@ func Is(err error, target error) bool {
 	return oerrors.Is(err, target)
 }
 
-func As(err error, target error) bool {
-	return oerrors.As(err, &target)
+func As(err error, target interface{}) bool {
+	return oerrors.As(err, target)
 }
 
 func IfErr(err error) bool {
@@ -347,7 +347,7 @@ func IsPanic(err error, target error) bool {
 }
 
 // Something very low level.
-func AsTrace(err error, target error) bool {
+func AsTrace(err error, target interface{}) bool {
 	if As(err, target) {
 		log.Trace(errors.WithStack(err))
 		return true
@@ -356,7 +356,7 @@ func AsTrace(err error, target error) bool {
 }
 
 // Useful debugging information.
-func AsDebug(err error, target error) bool {
+func AsDebug(err error, target interface{}) bool {
 	if As(err, target) {
 		log.Debug(errors.WithStack(err))
 		return true
@@ -365,7 +365,7 @@ func AsDebug(err error, target error) bool {
 }
 
 // omething noteworthy happened!
-func AsInfo(err error, target error) bool {
+func AsInfo(err error, target interface{}) bool {
 	if As(err, target) {
 		log.Info(errors.WithStack(err))
 		return true
@@ -374,7 +374,7 @@ func AsInfo(err error, target error) bool {
 }
 
 // ou should probably take a look at this.
-func AsWarn(err error, target error) bool {
+func AsWarn(err error, target interface{}) bool {
 	if As(err, target) {
 		log.Warn(errors.WithStack(err))
 		return true
@@ -383,7 +383,7 @@ func AsWarn(err error, target error) bool {
 }
 
 // Something failed but I'm not quitting. Calls os.Exit(1) after logging
-func AsError(err error, target error) bool {
+func AsError(err error, target interface{}) bool {
 	if As(err, target) {
 		log.Error(errors.WithStack(err))
 		return true
@@ -392,7 +392,7 @@ func AsError(err error, target error) bool {
 }
 
 // Bye. Calls panic() after logging
-func AsFatal(err error, target error) bool {
+func AsFatal(err error, target interface{}) bool {
 	if As(err, target) {
 		log.Fatal(errors.WithStack(err))
 		return true
@@ -401,7 +401,7 @@ func AsFatal(err error, target error) bool {
 }
 
 // I'm bailing.
-func AsPanic(err error, target error) bool {
+func AsPanic(err error, target interface{}) bool {
 	if As(err, target) {
 		log.Panic(errors.WithStack(err))
 		return true

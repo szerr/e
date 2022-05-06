@@ -13,7 +13,7 @@ func TestAll(t *testing.T) {
 	if Trace(err) {
 		t.Log("trace ok")
 	}
-	if AsInfo(o, err) {
+	if AsWarn(o, &err) {
 		t.Log("as ok")
 	}
 	if IsInfos(o, err) {
