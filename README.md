@@ -66,5 +66,5 @@ if e.AsTrace(err, target){
 
 
 # 鸣谢
-引用了 [logrus](https://github.com/sirupsen/logrus) 提供的日志分级
-引用了 [errors](github.com/pkg/errors) 提供的异常栈
+- 引用了 [logrus](https://github.com/sirupsen/logrus) 提供的日志分级
+- 引用了 [errors](github.com/pkg/errors) 提供的异常栈
